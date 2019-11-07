@@ -21,5 +21,7 @@ int main(int argc, char *argv[]) {
 	inserirTelefone(&temp.telefones, 123456);
 	insereNode(&r, temp);
 	printEmOrdem(r);
+	excluirNode(&r, "teste");
+	printEmOrdem(r);
 	return 0;
 }
