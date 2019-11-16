@@ -75,12 +75,34 @@ struct Node * encontrarMaior(struct Node **r)
 		return encontrarMaior(&((*r)->dir));
 }
 
-void printEmOrdem(struct Node *r)
+struct Node *localizarNode(struct Node *r, char *nome)
+{
+	if(!r)
+		return NULL;
+	else if(strcmp(r->contato.nome, nome) == 0)
+		return r;
+	else if(strcmp(r->contato.nome, nome) > 0)
+		return (localizarNode(r->esq, nome));
+	else
+		return (localizarNode(r->dir, nome));
+}
+
+void printEmOrdemCrescente(struct Node *r)
 {
 	if(r != NULL){
-		printEmOrdem(r->esq);
+		printEmOrdemCrescente(r->esq);
 		printf("%s\n", r->contato.nome);
 		printTelefones(&r->contato.telefones);
-		printEmOrdem(r->dir);
+		printEmOrdemCrescente(r->dir);
+	}
+}
+
+void printEmOrdemDecrescente(struct Node *r)
+{
+	if(r != NULL){
+		printEmOrdemDecrescente(r->dir);
+		printf("%s\n", r->contato.nome);
+		printTelefones(&r->contato.telefones);
+		printEmOrdemDecrescente(r->esq);
 	}
 }

@@ -21,8 +21,12 @@ void insere(struct Node **r, struct Node *novo);
 
 void excluirNode(struct Node **r, char *nome);
 
-struct Node * encontrarMaior(struct Node **r);
+struct Node *encontrarMaior(struct Node **r);
 
-void printEmOrdem(struct Node *r);
+struct Node *localizarNode(struct Node *r, char *nome); 
+
+void printEmOrdemCrescente(struct Node *r);
+
+void printEmOrdemDecrescente(struct Node *r);
 
 #endif
